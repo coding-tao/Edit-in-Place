@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul,li{
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color:#333;
+    font-size:40px;
+  }
+  li {
+    float:left;
+    width:50px;
+  }
+
+  li.on a{
+    color:green;
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for = "(index,n) in 4" v-bind:class="{on:(tab == index)}" v-on:mouseover = "setCurrent(index)">
+        <a href="">{{n+1}}</a>
+      </li>
+    </ul>
+  </div>
+  <script src="http://cdn.bootcss.com/vue/2.0.0-rc.1/vue.min.js"></script>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        tab:1
+      },
+      methods:{
+        setCurrent:function (index) {
+          this.tab = index;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

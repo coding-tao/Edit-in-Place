@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="http://cdn.bootcss.com/vue/2.0.0-rc.1/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p >问个问题<input type="text" v-model="question"></p>
+    <p>{{answer}}</p>
+  </div>
+  <script>
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      question:"",
+      answer:"你提问我回答..."
+    },
+    watch:{
+      question:function (newValue,oldValue) {
+        this.answer = "您正在输入...";
+        this.getAnswer();
+      }
+    },
+    methods:{
+      getAnswer () {
+        var that = this;
+        var str = this.question;
+        if (str.indexOf("?")<0) {
+          setTimeout(function () {
+            that.answer = "请以？结尾"
+          },1000);
+          return;
+        }
+        if (str.length == 0) {
+          setTimeout(function () {
+            that.answer = "不能为空"
+          },1000);
+          return;
+        }
+        setTimeout(function () {
+            that.answer = '正在思考中'
+        },2000);
+        setTimeout(function () {
+          that.answer = '答案来自百度'
+        },4000)
+      }
+    }
+  })
+  </script>
+</body>
+</html>

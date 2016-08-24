@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <button  name="button" @click="countUp">点击</button>
+    <p>当前的计数为</p>{{count}}
+  </div>
+  <script src="http://cdn.bootcss.com/vue/2.0.0-rc.1/vue.min.js"></script>
+  <script type="text/javascript">
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        count:0
+      },
+      methods:{
+        countUp:function () {
+          this.count++;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

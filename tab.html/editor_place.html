@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+    <div id="app">
+      <div id="zh_name_wrapper">
+        <span @click="editorPlace" :style="{display:showText}">{{content}}</span>
+        <input v-model="content" type="text" :style="{display:showInput}">
+        <input type="button" @click="makeSure" value="保存":style="{display:showInput}">
+        <input type="button"  @click="stopSure" value="取消" :style="{display:showInput}">
+      </div>
+    </div>
+    <script src="http://cdn.bootcss.com/vue/2.0.0-rc.1/vue.min.js"></script>
+    <script type="text/javascript">
+      var vm = new Vue({
+        el:'#app',
+        data:{
+          showText:'inline',
+          showInput:'none',
+          content:'无名氏',
+          oldValue:'',
+        },
+        methods:{
+          editorPlace(){
+            this.showText = 'none',
+            this.showInput = 'inline',
+            this.oldValue = this.content;
+          },
+          makeSure(){
+            this.showText = 'inline',
+            this.showInput = 'none'
+          },
+          stopSure(){
+            this.showText = 'inline',
+            this.showInput = 'none',
+            this.content = this.oldValue
+          }
+        }
+      });
+    </script>
+</body>
+</html>
